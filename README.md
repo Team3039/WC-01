@@ -1,6 +1,6 @@
 # WC-01
 
-Wildcat-01 Test Frame
+<b> Wildcat-01 </b> - Test Type
 
 <b> Students </b> 
 alexise643@icloud.com | polarbearjaf@gmail.com | Bodhaansh@gmail.com
