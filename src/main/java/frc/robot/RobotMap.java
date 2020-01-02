@@ -12,7 +12,7 @@ public class RobotMap {
   public static int rearrightMotor = 11; 
 
 //SOLENOID
-  public static int hatchGrip = 0;
+  public static int wheelSwap = 0;
 
 //PWM
 

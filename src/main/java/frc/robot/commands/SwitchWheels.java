@@ -14,16 +14,16 @@ import frc.robot.RobotContainer;
 /**
  * An example command that uses an example subsystem.
  */
-public class ExampleCommand extends CommandBase {
+public class SwitchWheels extends CommandBase {
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(SubsystemBase subsystem) {
+  public SwitchWheels(SubsystemBase subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_exampleSubsystem);
+    addRequirements(RobotContainer.drivetrain);
   }
 
   // Called when the command is initially scheduled.
@@ -34,11 +34,13 @@ public class ExampleCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    RobotContainer.drivetrain.driveSwitch(true);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    RobotContainer.drivetrain.driveSwitch(false);
   }
 
   // Returns true when the command should end.

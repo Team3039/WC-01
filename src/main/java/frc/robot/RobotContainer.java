@@ -10,10 +10,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj2.command.button.Button;
+import frc.robot.commands.SwitchWheels;
 import frc.robot.controllers.PS4Gamepad;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.AutoCommand;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -23,11 +24,13 @@ import frc.robot.subsystems.ExampleSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public final static ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public final static Drivetrain drivetrain = new Drivetrain();
-  public final static ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  
+  public final static AutoCommand autoCommand = new AutoCommand();
 
   public static PS4Gamepad driverPad = new PS4Gamepad(0);
+
+  Button driverX = driverPad.getButtonX();
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -44,6 +47,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    driverX.toggleWhenPressed(new SwitchWheels(drivetrain));
   }
 
 
@@ -54,7 +58,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return autoCommand;
   }
 
   public static PS4Gamepad getDriver() {

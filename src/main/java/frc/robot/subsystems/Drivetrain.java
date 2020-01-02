@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -24,6 +25,7 @@ public class Drivetrain extends SubsystemBase {
   public TalonSRX leftBackDrive = new TalonSRX(RobotMap.rearleftMotor);
   public TalonSRX rightBackDrive = new TalonSRX(RobotMap.rearrightMotor);
 
+  public Solenoid wheelSwap = new Solenoid(RobotMap.wheelSwap);
 
   public Drivetrain() {
     setNeutralMode(NeutralMode.Brake);
@@ -61,8 +63,29 @@ public class Drivetrain extends SubsystemBase {
     leftBackDrive.setNeutralMode(mode);
   }
 
+  public double getLeftPosition() {
+    return leftBackDrive.getSelectedSensorPosition();
+  }
+
+  public double getRightPosition() {
+    return rightBackDrive.getSelectedSensorPosition();
+  }
+
+  public double getLeftVelocity() {
+    return leftBackDrive.getSelectedSensorVelocity();
+  }
+
+  public double getRightVelocity() {
+    return rightBackDrive.getSelectedSensorVelocity();
+  }
+
+  public void driveSwitch (boolean onColsons) {
+    wheelSwap.set(onColsons);
+  }
+
   @Override
   public void periodic() {
+    //TODO: test this to see if it works
     joystickControl(RobotContainer.getDriver());
   }
 }
