@@ -82,6 +82,14 @@ public class Drivetrain extends SubsystemBase {
   public void driveSwitch (boolean onColsons) {
     wheelSwap.set(onColsons);
   }
+  
+  public double inchesToMeters(double inches) {
+    return inches * 0.0254;
+  }
+
+  public double degToRad(double degrees) {
+    return degrees * Math.PI/180;
+  }
 
   @Override
   public void periodic() {
