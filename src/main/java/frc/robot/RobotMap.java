@@ -6,10 +6,10 @@ public class RobotMap {
   public final static int operator = 1;
 
 //CAN
-  public static int frontleftMotor = 4;
-  public static int frontrightMotor = 10;
-  public static int rearleftMotor = 5; 
-  public static int rearrightMotor = 11; 
+  public static int frontleftMotor = 0;
+  public static int frontrightMotor = 1;
+  public static int rearleftMotor = 2; 
+  public static int rearrightMotor = 3; 
 
 //SOLENOID
   public static int wheelSwap = 0;

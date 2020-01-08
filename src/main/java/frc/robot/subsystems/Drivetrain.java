@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -20,8 +21,8 @@ import frc.robot.controllers.PS4Gamepad;
 
 public class Drivetrain extends SubsystemBase {
 
-  public TalonSRX leftFrontDrive = new TalonSRX(RobotMap.frontleftMotor);
-  public TalonSRX rightFrontDrive = new TalonSRX(RobotMap.frontrightMotor);
+  public VictorSPX leftFrontDrive = new VictorSPX(RobotMap.frontleftMotor);
+  public VictorSPX rightFrontDrive = new VictorSPX(RobotMap.frontrightMotor);
   public TalonSRX leftBackDrive = new TalonSRX(RobotMap.rearleftMotor);
   public TalonSRX rightBackDrive = new TalonSRX(RobotMap.rearrightMotor);
 
@@ -31,7 +32,7 @@ public class Drivetrain extends SubsystemBase {
     setNeutralMode(NeutralMode.Brake);
   }
 
-  public void joystickControl(PS4Gamepad gp) {
+  public void joystickControl(PS4Gamepad gp) { 
     //Tele-Op Driving
     //Each Motor is Set to Brake Mode, the motor speeds are set in an Arcade Drive fashion
     double y = gp.getLeftYAxis()*-Constants.y;
